@@ -47,7 +47,21 @@ function playRound(playerChoice, computerChoice){
 
 function game(){
     for(let i = 0; i < 5; i++){
-        let playerChoice = window.prompt("Choose your fighting stance! (rock, paper, or scissor) : ").toLowerCase().trim();
+        let checkChoice = 0;
+        let playerChoice = "";
+        while(checkChoice == 0){
+            playerChoice = window.prompt("Choose your fighting stance! (rock, paper, or scissor) : ").toLowerCase().trim();
+            if(playerChoice == "rock" || playerChoice == "paper" || playerChoice == "scissor"){
+                checkChoice = 1;
+            }
+            else if(playerChoice == "scissors"){
+                playerChoice = "scissor";
+                checkChoice = 1;
+            }
+            else{
+                alert("That's not an option... don't make me ask again...")
+            }
+        }
         let computerChoice = computerPlay();
         alert(playRound(playerChoice, computerChoice));
     }
